@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'maddog',
-        'USER': 'deploy',
-        'PASSWORD': 'deploy',
+        'USER': 'maddog',
+        'PASSWORD': 'maddog',
         'HOST': 'postgres',
         'PORT': 5432,
     }
