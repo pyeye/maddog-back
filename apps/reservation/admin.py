@@ -7,8 +7,8 @@ class ReservationAdmin(admin.ModelAdmin):
 
     def time_format(self, obj):
         return obj.time.strftime("%H:%M")
-    start_format.admin_order_field = 'time'
-    start_format.short_description = 'Время'
+    time_format.admin_order_field = 'time'
+    time_format.short_description = 'Время'
 
     def date_format(self, obj):
         return obj.date.strftime("%d.%m.%Y")
