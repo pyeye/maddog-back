@@ -25,7 +25,7 @@ SECRET_KEY = '9#8jbs#v!s+!q--l^!%en-h^0exja##euju+$a2_opg4_h1@x-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'versatileimagefield',
+    'apps.events',
+    'apps.menu',
+    'apps.gallery',
+    'apps.reservation',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -122,5 +128,36 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "../static/")
+STATIC_URL = '/st/'
+STATIC_ROOT = '/srv/www/maddog/src/static/'
+
+MEDIA_URL = '/img/'
+MEDIA_ROOT = '/srv/www/maddog/src/media/'
+
+VERSATILEIMAGEFIELD_SETTINGS = {
+    'create_images_on_demand': False,
+}
+
+VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
+    'event_poster': [
+        ('original', 'url'),
+        ('thumbnail', 'thumbnail__600x600')
+    ],
+    'menu_photo': [
+        ('original', 'url'),
+        ('thumbnail', 'thumbnail__480x480')
+    ],
+    'gallery_image': [
+        ('original', 'url'),
+        ('thumbnail', 'thumbnail__480x480'),
+        ('thumbnail_big', 'thumbnail__1080x1080')
+    ],
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        #remove on production
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
