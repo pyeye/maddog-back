@@ -12,7 +12,7 @@ class MenuAdmin(admin.ModelAdmin):
     inlines = [PriceInline]
 
     def created_at_f(self, obj):
-        return obj.date.strftime("%d.%m.%Y")
+        return obj.created_at.strftime("%d.%m.%Y")
     created_at_f.admin_order_field = 'created_at'
     created_at_f.short_description = 'Созданно'
 
