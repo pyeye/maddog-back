@@ -6,7 +6,7 @@ from .models import Reservation
 class ReservationAdmin(admin.ModelAdmin):
 
     def time_format(self, obj):
-        return obj.start.strftime("%H:%M")
+        return obj.time.strftime("%H:%M")
     start_format.admin_order_field = 'time'
     start_format.short_description = 'Время'
 
