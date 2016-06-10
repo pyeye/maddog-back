@@ -30,7 +30,7 @@ router.register(r'images', ImageViewSet)
 router.register(r'albums', AlbumViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
-    url(r'^admin/', admin.site.urls),
-    url(r'^reservation/', ReservationAPIView.as_view()),
+    url(r'^api/v1/', include(router.urls)),
+    url(r'^api/v1/admin/', admin.site.urls),
+    url(r'^api/v1/reservation/', ReservationAPIView.as_view()),
 ]
