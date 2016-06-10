@@ -38,7 +38,7 @@ class Price(models.Model):
     extra = JSONField(blank=True, null=True, default={}, verbose_name='Дополнительно')
 
     def __str__(self):
-        return self.value
+        return str(self.value)
 
     class Meta:
         verbose_name = 'Стоимость'
