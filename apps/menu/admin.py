@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Menu, Price
+from .models import Menu, Price, Category
 
 
 class PriceInline(admin.TabularInline):
@@ -18,7 +18,6 @@ class MenuAdmin(admin.ModelAdmin):
 
     def prices(self, obj):
         return obj.prices.all()
-    created_at_f.short_description = 'Цены'
 
     list_display = ('name', 'description', 'created_at_f', 'is_lunch', 'is_active', 'prices')
     list_filter = ['is_active', 'is_lunch']
@@ -27,4 +26,10 @@ class MenuAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ['name']
+
+
 admin.site.register(Menu, MenuAdmin)
+admin.site.register(Category, CategoryAdmin)

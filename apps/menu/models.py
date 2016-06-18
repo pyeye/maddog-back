@@ -15,7 +15,8 @@ def upload_location(instance, filename):
 class Menu(models.Model):
     name = models.CharField(max_length=255, null=False, unique=True, blank=False, verbose_name='Название')
     description = models.TextField(null=False, blank=False, verbose_name='Описание')
-    detail = JSONField(null=False, blank=False, verbose_name='Детально')
+    category = models.ForeignKey('Category', related_name='menu', verbose_name='Категория')
+    detail = JSONField(null=True, blank=True, verbose_name='Детально')
     created_at = models.DateTimeField(auto_now=True, null=False, blank=True, verbose_name='Созданно')
     photo = VersatileImageField(upload_to=upload_location, null=True, blank=True, verbose_name='Фото')
     is_lunch = models.BooleanField(default=False, null=False, blank=True, verbose_name='Бизнесс ланч')
@@ -28,6 +29,17 @@ class Menu(models.Model):
     class Meta:
         verbose_name = 'Меню'
         verbose_name_plural = 'Меню'
+
+class Category(models.Model):
+    name = models.CharField(max_length=255, null=False, unique=True, blank=False, verbose_name='Название')
+    extra = JSONField(blank=True, null=True, default={}, verbose_name='Дополнительно')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
 
 class Price(models.Model):

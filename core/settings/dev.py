@@ -143,6 +143,10 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
         ('original', 'url'),
         ('thumbnail', 'thumbnail__600x600')
     ],
+    'artist_img': [
+        ('original', 'url'),
+        ('thumbnail', 'thumbnail__600x600')
+    ],
     'menu_photo': [
         ('original', 'url'),
         ('thumbnail', 'thumbnail__480x480')
