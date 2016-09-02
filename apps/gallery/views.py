@@ -1,16 +1,16 @@
-from rest_framework import viewsets
+from rest_framework import generics
 
-from .serializers import ImageSerializer, AlbumSerializer
-from .models import Image, Album
-
-
-class ImageViewSet(viewsets.ReadOnlyModelViewSet):
-
-    queryset = Image.objects.filter(album=None)
-    serializer_class = ImageSerializer
+from .serializers import GallerySerializer, AlbumSerializer
+from .models import Album
 
 
-class AlbumViewSet(viewsets.ReadOnlyModelViewSet):
+class AlbumAPIView(generics.RetrieveAPIView):
 
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
+
+
+class GalleryAPIView(generics.ListAPIView):
+
+    queryset = Album.objects.all()
+    serializer_class = GallerySerializer

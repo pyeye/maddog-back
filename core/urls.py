@@ -17,20 +17,22 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 
-from  apps.events.views import EventViewSet
-from  apps.menu.views import MenuViewSet
-from  apps.gallery.views import ImageViewSet, AlbumViewSet
-from  apps.reservation.views import ReservationAPIView
+from apps.events.views import EventViewSet
+from apps.menu.views import MenuViewSet, SetViewSet, CategoryAPIView
+from apps.gallery.views import GalleryAPIView, AlbumAPIView
+from apps.reservation.views import ReservationAPIView
 
 
 router = routers.SimpleRouter()
-router.register(r'events', EventViewSet)
+router.register(r'events', EventViewSet, base_name='api-events')
 router.register(r'menu', MenuViewSet, base_name='api-menu')
-router.register(r'images', ImageViewSet)
-router.register(r'albums', AlbumViewSet)
+router.register(r'sets', SetViewSet, base_name='api-set')
 
 urlpatterns = [
     url(r'^api/v1/', include(router.urls)),
     url(r'^api/v1/admin/', admin.site.urls),
     url(r'^api/v1/reservation/', ReservationAPIView.as_view()),
+    url(r'^api/v1/albums/(?P<pk>\d+)', AlbumAPIView.as_view()),
+    url(r'^api/v1/albums/', GalleryAPIView.as_view()),
+    url(r'^api/v1/category/menu/', CategoryAPIView.as_view()),
 ]
