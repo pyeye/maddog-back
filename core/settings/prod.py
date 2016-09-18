@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apps.menu',
     'apps.gallery',
     'apps.reservation',
+    'apps.feedback',
 ]
 
 MIDDLEWARE_CLASSES = [

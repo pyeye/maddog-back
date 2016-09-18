@@ -21,6 +21,7 @@ from apps.events.views import EventViewSet
 from apps.menu.views import MenuViewSet, SetViewSet, CategoryAPIView
 from apps.gallery.views import GalleryAPIView, AlbumAPIView
 from apps.reservation.views import ReservationAPIView
+from apps.feedback.views import FeedbackAPIView
 
 
 router = routers.SimpleRouter()
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^api/v1/', include(router.urls)),
     url(r'^api/v1/admin/', admin.site.urls),
     url(r'^api/v1/reservation/', ReservationAPIView.as_view()),
+    url(r'^api/v1/feedback/', FeedbackAPIView.as_view()),
     url(r'^api/v1/albums/(?P<pk>\d+)', AlbumAPIView.as_view()),
     url(r'^api/v1/albums/', GalleryAPIView.as_view()),
     url(r'^api/v1/category/menu/', CategoryAPIView.as_view()),

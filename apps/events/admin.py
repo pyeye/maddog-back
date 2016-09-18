@@ -10,6 +10,7 @@ class EventAdmin(admin.ModelAdmin):
         ('Информация о дате', {'fields': ['date', 'start']}),
         ('Информация о стоимости', {'fields': ['discounts', 'price']}),
         ('Афиша', {'fields': ['poster']}),
+        ('Дополнительно', {'fields': ['extra']}),
     ]
 
     def start_format(self, obj):
