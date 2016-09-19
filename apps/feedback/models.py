@@ -5,6 +5,7 @@ from django.contrib.postgres.fields import JSONField
 class Feedback(models.Model):
 
     created_at = models.DateTimeField(auto_now=True, null=False, blank=True, verbose_name='Созданно')
+    name = models.CharField(max_length=255, null=False, blank=False, verbose_name='Имя')
     contact = models.CharField(max_length=255, null=True, blank=True, verbose_name='Контакт')
     message = models.TextField(null=False, blank=False, verbose_name='Сообщение')
     extra = JSONField(default={}, null=False, blank=True, verbose_name='Экстра')

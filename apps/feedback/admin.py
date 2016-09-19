@@ -10,8 +10,8 @@ class FeedbackAdmin(admin.ModelAdmin):
     date_format.admin_order_field = 'date'
     date_format.short_description = 'Дата'
 
-    list_display = ('contact', 'created_at')
+    list_display = ('name', 'contact', 'created_at')
     list_filter = ['created_at']
-    search_fields = ['contact']
+    search_fields = ['name']
 
 admin.site.register(Feedback, FeedbackAdmin)
