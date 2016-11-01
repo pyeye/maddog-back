@@ -5,9 +5,17 @@ from .models import Menu, Price, Category, Set, Group, MenuSet
 
 
 class PriceSerializer(serializers.ModelSerializer):
+
+    LUNCH_SALE = 0.5
+
+    lunch_value = serializers.SerializerMethodField('lunch_price')
+
+    def lunch_price(self, obj):
+        return obj.value * self.LUNCH_SALE
+
     class Meta:
         model = Price
-        fields = ('count', 'measure', 'value')
+        fields = ('count', 'measure', 'value', 'lunch_value')
 
 
 class GroupSerializer(serializers.ModelSerializer):

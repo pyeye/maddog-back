@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
 from rest_framework import routers
 
 from apps.events.views import EventViewSet
@@ -38,3 +39,9 @@ urlpatterns = [
     url(r'^api/v1/albums/', GalleryAPIView.as_view()),
     url(r'^api/v1/category/menu/', CategoryAPIView.as_view()),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^api/v1/__debug__/', include(debug_toolbar.urls)),
+    ]

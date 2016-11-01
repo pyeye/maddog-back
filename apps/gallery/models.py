@@ -7,6 +7,7 @@ from versatileimagefield.fields import VersatileImageField
 from versatileimagefield.image_warmer import VersatileImageFieldWarmer
 
 from apps.events.models import Event
+from .managers import GalleryManager
 
 
 def upload_location(instance, filename):
@@ -27,6 +28,9 @@ class Album(models.Model):
     created_at = models.DateTimeField(auto_now=True, null=False, blank=True, verbose_name='Созданно')
     main_image = VersatileImageField(upload_to=album_upload_location, null=False, blank=False, verbose_name='Фото')
     event = models.ForeignKey(Event, related_name='album', null=False, blank=False, verbose_name='Мероприятие')
+
+    objects = models.Manager()
+    related_objects = GalleryManager()
 
     def __str__(self):
         return self.name

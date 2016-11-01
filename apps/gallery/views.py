@@ -12,5 +12,8 @@ class AlbumAPIView(generics.RetrieveAPIView):
 
 class GalleryAPIView(generics.ListAPIView):
 
-    queryset = Album.objects.all()
     serializer_class = GallerySerializer
+
+    def get_queryset(self):
+        queryset = Album.related_objects.all()
+        return queryset

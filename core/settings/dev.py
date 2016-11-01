@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'versatileimagefield',
+    'debug_toolbar',
     'apps.events',
     'apps.menu',
     'apps.gallery',
@@ -53,14 +54,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -171,8 +168,8 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     ],
     'album_image': [
         ('original', 'url'),
-        ('thumbnail', 'thumbnail__480x480'),
-        ('thumbnail_big', 'thumbnail__1080x1080')
+        ('thumbnail', 'thumbnail__480x350'),
+        ('thumbnail_big', 'thumbnail__1400x1080')
     ],
 }
 
@@ -182,4 +179,31 @@ REST_FRAMEWORK = {
         #remove on production
         'rest_framework.renderers.BrowsableAPIRenderer',
     )
+}
+#remove on production
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+INTERNAL_IPS = ['0.0.0.0', '127.0.0.1']
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+
+def show_toolbar(request):
+
+    return True
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
 }

@@ -171,8 +171,8 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     ],
     'album_image': [
         ('original', 'url'),
-        ('thumbnail', 'thumbnail__480x480'),
-        ('thumbnail_big', 'thumbnail__1080x1080')
+        ('thumbnail', 'thumbnail__480x350'),
+        ('thumbnail_big', 'thumbnail__1400x1080')
     ],
 }
 

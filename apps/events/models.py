@@ -8,11 +8,14 @@ from django.utils.text import slugify
 from versatileimagefield.fields import VersatileImageField
 from versatileimagefield.image_warmer import VersatileImageFieldWarmer
 
+from .managers import EventsManager
+
 
 def upload_location(instance, filename):
     year, month = instance.date.year, instance.date.month
     filename = str(uuid.uuid4())[:13] + '_' + filename
     return "events/{0}/{1}/{2}".format(year, month, filename)
+
 
 def artists_upload_location(instance, filename):
     name = slugify(instance.name, allow_unicode=True)
@@ -32,6 +35,9 @@ class Event(models.Model):
     is_active = models.BooleanField(default=True, null=False, blank=True, verbose_name='Активировано')
     poster = VersatileImageField(upload_to=upload_location, null=True, blank=True, verbose_name='Афиша')
     extra = JSONField(blank=True, null=True, default={}, verbose_name='Дополнительно')
+
+    objects = models.Manager()
+    related_objects = EventsManager()
 
     def __str__(self):
         return self.name

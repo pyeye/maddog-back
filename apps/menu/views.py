@@ -16,7 +16,7 @@ class MenuViewSet(viewsets.ReadOnlyModelViewSet):
         Optionally restricts the returned purchases to a given user,
         by filtering against a `username` query parameter in the URL.
         """
-        queryset = Menu.objects.filter(is_active=True)
+        queryset = Menu.related_objects.filter(is_active=True)
         group = self.request.query_params.get('group', None)
         if group is not None:
             queryset = queryset.filter(category__group__code=group)

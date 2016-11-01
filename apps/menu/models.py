@@ -8,6 +8,8 @@ from django.core.exceptions import ValidationError
 from versatileimagefield.fields import VersatileImageField
 from versatileimagefield.image_warmer import VersatileImageFieldWarmer
 
+from .managers import MenuManager
+
 
 def menu_upload_location(instance, filename):
     filename = str(uuid.uuid4())[:13] + '_' + filename
@@ -29,6 +31,9 @@ class Menu(models.Model):
     photo_base64 = models.CharField(max_length=255, null=False, blank=True, default='base', verbose_name='Фото Base64')
     is_active = models.BooleanField(default=True, null=False, blank=True, verbose_name='Активированно')
     extra = JSONField(blank=True, null=True, default={}, verbose_name='Дополнительно')
+
+    objects = models.Manager()
+    related_objects = MenuManager()
 
     def __str__(self):
         return self.name
