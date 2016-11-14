@@ -20,17 +20,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9#8jbs#v!s+!q--l^!%en-h^0exja##euju+$a2_opg4_h1@x-'
+SECRET_KEY = os.getenv("SECRET_KEY", False)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['146.185.165.166']
+ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS")]
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'whirpool.174@gmail.com'
-EMAIL_HOST_PASSWORD = '48c932f89006b88acae9594bc8e7b020'
-EMAIL_PORT = 587
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
 EMAIL_USE_TLS = True
 
 
@@ -90,11 +90,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'maddog',
-        'USER': 'maddog',
-        'PASSWORD': 'maddog',
-        'HOST': 'postgres',
-        'PORT': 5432,
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT': os.getenv("DB_PORT"),
     }
 }
 
