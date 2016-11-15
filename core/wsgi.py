@@ -15,8 +15,10 @@ from django.core.wsgi import get_wsgi_application
 debug = os.getenv("DEBUG", "False")
 
 if ast.literal_eval(debug):
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.dev")
+    settings_module = 'core.settings.dev'
 else:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.prod")
+    settings_module = 'core.settings.prod'
+
+os.environ['DJANGO_SETTINGS_MODULE'] = settings_module
 
 application = get_wsgi_application()
