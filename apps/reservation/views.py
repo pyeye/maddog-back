@@ -4,9 +4,12 @@ from rest_framework.generics import CreateAPIView
 
 from .serializers import ReservationSerializer
 
+from apps.base.auth import UnsafeSessionAuthentication
+
 
 class ReservationAPIView(CreateAPIView):
     serializer_class = ReservationSerializer
+    authentication_classes = (UnsafeSessionAuthentication,)
 
     def perform_create(self, serializer):
         serializer.save()
