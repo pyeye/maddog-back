@@ -133,6 +133,10 @@ USE_TZ = True
 
 DATE_FORMAT = 'd E Y'
 
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+CSRF_COOKIE_SECURE = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -148,7 +152,7 @@ VERSATILEIMAGEFIELD_SETTINGS = {
 }
 
 VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
-    'event_poster': [
+    'event_poster': [  
         ('original', 'url'),
         ('thumbnail', 'thumbnail__600x600')
     ],
