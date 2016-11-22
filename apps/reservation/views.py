@@ -16,6 +16,7 @@ class ReservationAPIView(CreateAPIView):
         send_mail(
             'Новая бронь',
             'Проверь админку',
-            'reservation@maddogclub.com',
+            settings.EMAIL_HOST_USER,
+            ['reservation@maddogclub.com'],
             fail_silently=False
         )
