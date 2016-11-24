@@ -30,5 +30,5 @@ class Reservation(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Резервация'
-        verbose_name_plural = 'Резервация'
+        verbose_name = 'Бронирование'
+        verbose_name_plural = 'Бронирование'
