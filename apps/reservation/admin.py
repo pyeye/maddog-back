@@ -20,4 +20,4 @@ class ReservationAdmin(admin.ModelAdmin):
     list_editable = ['status']
     search_fields = ['phone_number']
 
-admin.site.register(Reservation, ReservationAdmin)
+admin.site.register(Reservation)
