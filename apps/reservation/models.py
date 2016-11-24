@@ -26,6 +26,9 @@ class Reservation(models.Model):
     comment = models.TextField(null=True, blank=True, verbose_name='Коментарий')
     extra = JSONField(default={}, null=False, blank=True, verbose_name='Экстра')
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Резервация'
         verbose_name_plural = 'Резервация'
