@@ -12,10 +12,10 @@ class ReservationAPIView(CreateAPIView):
     authentication_classes = (UnsafeSessionAuthentication,)
 
     def perform_create(self, serializer):
-        serializer.save()
+        instance = serializer.save()
         send_mail(
-            'Новая бронь: ' + str(serializer.data.name),
-            'https://maddogclub.com/api/v1/admin/reservation/reservation/' + str(serializer.data.pk) + '/change/',
+            'Новая бронь: ' + str(instance.name),
+            'https://maddogclub.com/api/v1/admin/reservation/reservation/' + str(instance.pk) + '/change/',
             settings.EMAIL_HOST_USER,
             ['reservation@maddogclub.com'],
             fail_silently=False

@@ -12,10 +12,10 @@ class FeedbackAPIView(CreateAPIView):
     authentication_classes = (UnsafeSessionAuthentication,)
 
     def perform_create(self, serializer):
-        serializer.save()
+        instance = serializer.save()
         send_mail(
             'Новый отзыв',
-            'https://maddogclub.com/api/v1/admin/feedback/feedback/' + str(serializer.data.pk) + '/change/',
+            'https://maddogclub.com/api/v1/admin/feedback/feedback/' + str(instance.pk) + '/change/',
             settings.EMAIL_HOST_USER,
             ['feedback@maddogclub.com'],
             fail_silently=False
