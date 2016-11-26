@@ -15,7 +15,7 @@ class FeedbackAPIView(CreateAPIView):
         serializer.save()
         send_mail(
             'Новый отзыв',
-            'https://maddogclub.com/api/v1/admin/feedback/feedback/' + str(serializer.pk) + '/change/',
+            'https://maddogclub.com/api/v1/admin/feedback/feedback/' + str(serializer.data.pk) + '/change/',
             settings.EMAIL_HOST_USER,
             ['feedback@maddogclub.com'],
             fail_silently=False
