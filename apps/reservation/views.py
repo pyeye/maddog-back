@@ -14,8 +14,8 @@ class ReservationAPIView(CreateAPIView):
     def perform_create(self, serializer):
         serializer.save()
         send_mail(
-            'Новая бронь',
-            'https://maddogclub.com/api/v1/admin/reservation/reservation/' + serializer.pk + '/change/',
+            'Новая бронь: ' + str(serializer.name),
+            'https://maddogclub.com/api/v1/admin/reservation/reservation/' + str(serializer.pk) + '/change/',
             settings.EMAIL_HOST_USER,
             ['reservation@maddogclub.com'],
             fail_silently=False
