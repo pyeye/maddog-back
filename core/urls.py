@@ -19,6 +19,7 @@ from django.conf import settings
 from rest_framework import routers
 
 from apps.events.views import EventViewSet
+from apps.news.views import NewsViewSet
 from apps.menu.views import MenuViewSet, SetViewSet, CategoryAPIView
 from apps.gallery.views import GalleryAPIView, AlbumAPIView
 from apps.reservation.views import ReservationAPIView
@@ -27,6 +28,7 @@ from apps.feedback.views import FeedbackAPIView
 
 router = routers.SimpleRouter()
 router.register(r'events', EventViewSet, base_name='api-events')
+router.register(r'news', NewsViewSet, base_name='api-news')
 router.register(r'menu', MenuViewSet, base_name='api-menu')
 router.register(r'sets', SetViewSet, base_name='api-set')
 
