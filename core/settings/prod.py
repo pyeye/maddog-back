@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'apps.events',
     'apps.menu',
     'apps.gallery',
+    'apps.news',
     'apps.reservation',
     'apps.feedback',
 ]
@@ -177,6 +178,11 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
         ('original', 'url'),
         ('thumbnail', 'thumbnail__480x350'),
         ('thumbnail_big', 'thumbnail__1400x1080')
+    ],
+    'news_image': [
+        ('original', 'url'),
+        ('thumbnail', 'thumbnail__350x480'),
+        ('thumbnail_big', 'thumbnail__600x900')
     ],
 }
 
