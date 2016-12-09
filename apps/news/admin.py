@@ -10,7 +10,13 @@ class NewsAdmin(admin.ModelAdmin):
     created_format.admin_order_field = 'created'
     created_format.short_description = 'Созданно'
 
-    list_display = ('title', 'created_format', 'is_active')
+    def updated_format(self, obj):
+        return obj.created_at.strftime("%d.%m.%Y")
+
+    updated_format.admin_order_field = 'updated'
+    updated_format.short_description = 'Обновленно'
+
+    list_display = ('title', 'created_format', 'updated_format', 'is_active')
     list_editable = ['is_active']
     search_fields = ['title']
     date_hierarchy = 'created_at'
