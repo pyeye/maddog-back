@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db import models
+from pagedown.widgets import AdminPagedownWidget
 
 from .models import Event, Artist
 
@@ -12,6 +14,10 @@ class EventAdmin(admin.ModelAdmin):
         ('Афиша', {'fields': ['poster']}),
         ('Дополнительно', {'fields': ['extra']}),
     ]
+
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget},
+    }
 
     def start_format(self, obj):
         return obj.start.strftime("%H:%M")

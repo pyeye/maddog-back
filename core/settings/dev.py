@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'versatileimagefield',
+    'pagedown',
     'debug_toolbar',
     'apps.events',
     'apps.menu',
@@ -174,8 +175,7 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     ],
     'news_image': [
         ('original', 'url'),
-        ('thumbnail', 'thumbnail__350x480'),
-        ('thumbnail_big', 'thumbnail__600x900')
+        ('thumbnail', 'thumbnail__600x600')
     ],
 }
 

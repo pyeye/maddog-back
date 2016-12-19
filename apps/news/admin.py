@@ -1,9 +1,15 @@
 from django.contrib import admin
+from django.db import models
+from pagedown.widgets import AdminPagedownWidget
 
 from .models import News, Category
 
 
 class NewsAdmin(admin.ModelAdmin):
+
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget},
+    }
 
     def created_format(self, obj):
         return obj.created_at.strftime("%d.%m.%Y")
