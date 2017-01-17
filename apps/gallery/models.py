@@ -38,6 +38,7 @@ class Album(models.Model):
     class Meta:
         verbose_name = 'Альбом'
         verbose_name_plural = 'Альбомы'
+        ordering = ['-created_at']
 
 
 class Image(models.Model):

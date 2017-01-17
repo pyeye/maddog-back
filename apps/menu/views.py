@@ -1,12 +1,13 @@
 from rest_framework import viewsets, generics
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
+from rest_framework_extensions.cache.mixins import CacheResponseMixin
 
 from .serializers import MenuSerializer, SetSerializer, CategorySerializer
 from .models import Menu, Set, Category
 from apps.base.renderers import MDMenuRenderer
 
 
-class MenuViewSet(viewsets.ReadOnlyModelViewSet):
+class MenuViewSet(CacheResponseMixin, viewsets.ReadOnlyModelViewSet):
 
     serializer_class = MenuSerializer
     renderer_classes = (MDMenuRenderer, JSONRenderer, BrowsableAPIRenderer)
