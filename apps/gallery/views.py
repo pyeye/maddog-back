@@ -10,7 +10,6 @@ class AlbumAPIView(generics.RetrieveAPIView):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
 
-    @cache_response()
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
 
